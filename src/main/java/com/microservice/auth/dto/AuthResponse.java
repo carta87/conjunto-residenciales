@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonPropertyOrder({"username", "message", "status", "token"})
+@JsonPropertyOrder({"email", "message", "status", "token"})
 public class AuthResponse {
 
-    private String username;
+    private String email;
     private String token;
     private String message;
     private boolean status;

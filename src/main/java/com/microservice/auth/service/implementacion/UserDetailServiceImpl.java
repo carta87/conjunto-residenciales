@@ -21,7 +21,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private final IUserRepository iUserRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = iUserRepository.findByUsername(username)
+        UserEntity userEntity = iUserRepository.findByEmail(username)
                 .orElseThrow(() -> new NotUsernameFoundException("User "+ username +" no encontrado", HttpStatus.BAD_REQUEST));
 
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
@@ -34,7 +34,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
                 .flatMap(roleEntity ->roleEntity.getPermissionList().stream())
                 .forEach(permissionEntity -> authorities.add(new SimpleGrantedAuthority(permissionEntity.getName())));
 
-        return new User(userEntity.getUsername(),
+        return new User(userEntity.getEmail(),
                 userEntity.getPassword(),
                 userEntity.isEnable(),
                 userEntity.isAccountNoExpired(),

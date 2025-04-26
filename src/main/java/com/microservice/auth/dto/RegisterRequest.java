@@ -6,14 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequest {
 
-    @NotBlank
-    private String username;
     @NotBlank
     private String password;
     @NotBlank
@@ -24,4 +24,12 @@ public class RegisterRequest {
     private String lastName;
     @NotBlank
     private String country;
+    @NotBlank
+    private String numDocument;
+    @NotBlank
+    private Date dateBirth;
+    @NotBlank
+    private String phone;
+    @NotBlank
+    private ApartmentDTO apartmentDTO;
 }

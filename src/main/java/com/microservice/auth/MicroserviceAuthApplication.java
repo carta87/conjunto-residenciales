@@ -56,7 +56,6 @@ public class MicroserviceAuthApplication {
 
 				/* CREATE USERS */
 				UserEntity admin = UserEntity.builder()
-						.username("admin")
 						.email("admin@hotmail.com")
 						.password(passwordEncoder.encode("admin"))
 						.isEnable(Boolean.TRUE)
@@ -67,7 +66,6 @@ public class MicroserviceAuthApplication {
 						.build();
 
 				UserEntity user = UserEntity.builder()
-						.username("user")
 						.email("user@hotmail.com")
 						.password(passwordEncoder.encode("user"))
 						.isEnable(Boolean.TRUE)
@@ -78,8 +76,7 @@ public class MicroserviceAuthApplication {
 						.build();
 
 				UserEntity userCarlos = UserEntity.builder()
-						.username("carlos")
-						.email("carlos@hotmail.com")
+						.email("migueltafurr@gmail.com")
 						.password(passwordEncoder.encode("1234"))
 						.isEnable(Boolean.TRUE)
 						.accountNoExpired(Boolean.TRUE)

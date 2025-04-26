@@ -42,7 +42,7 @@ public class ErrorHandler {
     public ResponseEntity<ErrorDTO> dataIntegrityViolationExceptionHandler(DataIntegrityViolationException  ex){
         ErrorDTO errorDTO = ErrorDTO.builder().code("P-400").message(ex.getMessage()).build();
         if (ex.getMessage().contains("Duplicate entry"))
-            errorDTO.setMessage("usuario repetido en base datos... cambie username");
+            errorDTO.setMessage("usuario repetido en base datos... cambie email");
         return new ResponseEntity<>(errorDTO, HttpStatus.NOT_ACCEPTABLE);
     }
 
@@ -57,9 +57,7 @@ public class ErrorHandler {
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorDTO> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException  ex){
         ErrorDTO errorDTO = ErrorDTO.builder().code("P-400").message(ex.getMessage()).build();
-        if (ex.getMessage().contains("default message [username]]")){
-            errorDTO.setMessage("datos incompletos falta username");
-        }else if (ex.getMessage().contains("default message [password]]")){
+        if (ex.getMessage().contains("default message [password]]")){
             errorDTO.setMessage("datos incompletos falta contraseña");
         }else if (ex.getMessage().contains("default message [email]]") || ex.getMessage().contains(
                 "default message [debe ser una dirección de correo electrónico con formato correcto]]")){

@@ -1,8 +1,11 @@
 package com.microservice.auth.jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
+
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,18 +25,26 @@ public class UserEntity  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_name", unique = true)
-    private String username;
-
     @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "fist_name")
     private String fistName;
 
-    private String country;
+    private String numDocument;
+
+    @OneToOne
+    @JoinColumn(name = "apartment_id", referencedColumnName = "id")
+    private ApartmentEntity apartmentEntity;
+
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private Date dateBirth;
+
+    private String phone;
 
     @Email
+    @Column(unique = true)
     private String email;
 
     private String password;

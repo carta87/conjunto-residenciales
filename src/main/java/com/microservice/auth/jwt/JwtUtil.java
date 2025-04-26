@@ -32,7 +32,7 @@ public class JwtUtil {
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
-                .setSubject(userEntity.getUsername())
+                .setSubject(userEntity.getEmail())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(timeExpiration))) // 10 minutes
                 .signWith(getKey(), SignatureAlgorithm.HS256)

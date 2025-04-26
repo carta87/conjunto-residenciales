@@ -36,11 +36,11 @@ public class AuthService implements IAuthService {
     @Override
     public AuthResponse login(LoginRequest loginRequest) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-        String token = jwtUtil.getToken(iUserRepository.findByUsername(loginRequest.getUsername())
+                new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+        String token = jwtUtil.getToken(iUserRepository.findByEmail(loginRequest.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found")));
         return AuthResponse.builder()
-                .username(loginRequest.getUsername())
+                .email(loginRequest.getEmail())
                 .status(Boolean.TRUE)
                 .token(token)
                 .message("Token creado corectamente")
@@ -65,11 +65,9 @@ public class AuthService implements IAuthService {
                 });
 
         UserEntity userEntity = UserEntity.builder()
-                .username(registerRequest.getUsername())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .fistName(registerRequest.getFirsName())
                 .lastName(registerRequest.getLastName())
-                .country(registerRequest.getCountry())
                 .email(registerRequest.getEmail())
                 .isEnable(Boolean.TRUE)
                 .isEnable(Boolean.TRUE)
@@ -81,7 +79,7 @@ public class AuthService implements IAuthService {
         iUserRepository.save(userEntity);
 
         return AuthResponse.builder()
-                .username(registerRequest.getUsername())
+                .email(registerRequest.getEmail())
                 .token(jwtUtil.getToken(userEntity))
                 .message("Usuario creado corectamente")
                 .status(Boolean.TRUE)
