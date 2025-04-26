@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: micro-service-auth
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/servicios_conjunto?createDatabaseIfNotExist=true
+    username: root
+    password: 1234
+    hikari:
+      maximum-pool-size: 10  # Ajusta este valor según la cantidad de conexiones simultáneas
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+
+springdoc:
+  version: '@springdoc.version@'
+  api-docs:
+    version: openapi_3_1
+  cache:
+    disabled: true
+
+jwt:
+  secret:
+    key: 586E3272357538782F413F4428472B4B6250655368566B597033733676397924
+  time:
+    expiration: 3600000  # Tiempo en milisegundos (una hora)
