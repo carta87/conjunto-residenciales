@@ -1,6 +1,7 @@
-package com.microservice.auth.jwt;
+package com.microservice.auth.config;
 
 import com.microservice.auth.service.implementacion.UserDetailServiceImpl;
+import com.microservice.auth.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -4,6 +4,7 @@ import com.microservice.auth.dto.AuthResponse;
 import com.microservice.auth.dto.LoginRequest;
 import com.microservice.auth.dto.RegisterRequest;
 import com.microservice.auth.service.implementacion.AuthService;
+import com.microservice.auth.util.Constantes;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -78,10 +79,10 @@ public class AuthController {
             }
     )
     @PostMapping("/register")
-    public  ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest registerRequest) {
+    public  ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest registerRequest)  {
         CompromisedPasswordDecision decision =passwordChecker.check(registerRequest.getPassword());
         if (decision.isCompromised()) {
-            throw new IllegalArgumentException("Contraseña  muy utilizada.... cambiarla");
+            throw new IllegalArgumentException(Constantes.CONTRASENA_REPETIDA);
         }
         return ResponseEntity.ok(authService.register(registerRequest));
     }

@@ -1,4 +1,4 @@
-package com.microservice.auth.jwt;
+package com.microservice.auth.util;
 
 import com.microservice.auth.jpa.entity.UserEntity;
 import io.jsonwebtoken.Claims;
