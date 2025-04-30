@@ -1,5 +1,6 @@
 package com.microservice.auth.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class RegisterRequest {
 
     @NotBlank
@@ -17,14 +19,14 @@ public class RegisterRequest {
     @NotBlank
     private String email;
     @NotBlank
-    private String firsName;
+    private String nombres;
     @NotBlank
-    private String lastName;
+    private String appellidos;
     @NotBlank
-    private String numDocument;
+    private String numumeroDocumento;
     @NotBlank
-    private String dateBirth;
+    private String fechaNacimiento;
     @NotBlank
-    private String phone;
-    private ApartmentDTO apartmentDTO;
+    private String telefono;
+    private ApartmentDTO datosApartmento;
 }

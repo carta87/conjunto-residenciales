@@ -3,6 +3,7 @@ package com.microservice.auth.exception.advice;
 import com.microservice.auth.dto.ErrorDTO;
 import com.microservice.auth.exception.exceptiongeneric.NotUsernameFoundException;
 import com.microservice.auth.util.Constantes;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -80,6 +81,18 @@ public class ErrorHandler {
             errorDTO.setMessage(Constantes.ERROR_FALTA_NUM_DOCUMENT);
         }else if (ex.getMessage().contains("default message [phone]]")){
             errorDTO.setMessage(Constantes.ERROR_FALTA_NUM_PHONE);
+        }
+        return new ResponseEntity<>(errorDTO, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = ConstraintViolationException.class)
+    public ResponseEntity<ErrorDTO> constraintViolationExceptionHandler(ConstraintViolationException  ex){
+        ErrorDTO errorDTO = ErrorDTO.builder()
+                .code(Constantes.CODIGO_ERROR_PARTICULAR)
+                .message(ex.getMessage())
+                .build();
+        if (ex.getMessage().contains("propertyPath=email")){
+            errorDTO.setMessage(Constantes.ERROR_EMAIL_ERRADO);
         }
         return new ResponseEntity<>(errorDTO, HttpStatus.BAD_REQUEST);
     }

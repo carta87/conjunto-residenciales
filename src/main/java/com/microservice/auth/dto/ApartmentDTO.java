@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 public class ApartmentDTO {
 
     @NotBlank
-    private String country;
+    private String ciudad;
     @NotBlank
-    private String nunApartment;
+    private String numeroApartamento;
     @NotBlank
-    private String numTower;
+    private String numeroTorre;
 }

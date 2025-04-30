@@ -67,9 +67,9 @@ public class AuthService implements IAuthService {
                 });
 
         ApartmentEntity apartment = ApartmentEntity.builder()
-                .country(registerRequest.getApartmentDTO().getCountry())
-                .numTower(registerRequest.getApartmentDTO().getNumTower())
-                .nunApartment(registerRequest.getApartmentDTO().getNunApartment())
+                .country(registerRequest.getDatosApartmento().getCiudad())
+                .numTower(registerRequest.getDatosApartmento().getNumeroTorre())
+                .nunApartment(registerRequest.getDatosApartmento().getNumeroApartamento())
                 .build();
 
         apartment = iApartmentRepository.save(apartment);
@@ -81,12 +81,12 @@ public class AuthService implements IAuthService {
         try {
             userEntity = UserEntity.builder()
                     .password(passwordEncoder.encode(registerRequest.getPassword()))
-                    .fistName(registerRequest.getFirsName())
-                    .lastName(registerRequest.getLastName())
-                    .numDocument(registerRequest.getNumDocument())
+                    .fistName(registerRequest.getNombres())
+                    .lastName(registerRequest.getAppellidos())
+                    .numDocument(registerRequest.getNumumeroDocumento())
                     .email(registerRequest.getEmail())
-                    .phone(registerRequest.getPhone())
-                    .dateBirth(formatter.parse(registerRequest.getDateBirth()))
+                    .phone(registerRequest.getTelefono())
+                    .dateBirth(formatter.parse(registerRequest.getFechaNacimiento()))
                     .isEnable(Boolean.TRUE)
                     .isEnable(Boolean.TRUE)
                     .accountNoExpired(Boolean.TRUE)

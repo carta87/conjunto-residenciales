@@ -16,11 +16,12 @@ public class ApartmentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "cuidad")
     private String country;
 
+    @Column(name = "numero_apartamento")
     private String nunApartment;
 
+    @Column(name = "numero_torre")
     private String numTower;
-
-
 }

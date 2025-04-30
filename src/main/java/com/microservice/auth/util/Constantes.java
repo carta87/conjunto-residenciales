@@ -1,6 +1,9 @@
 package com.microservice.auth.util;
 
 public class Constantes {
+    private Constantes() {
+        // evitar instanciación
+    }
     public static final  String PERMISO_READ = "READ";
     public static final  String PERMISO_CREATE = "CREATE";
     public static final  String PERMISO_UPDATE = "UPDATE";
@@ -16,8 +19,11 @@ public class Constantes {
     public static final  String ERROR_EMAIL_REPETIDA = "usuario repetido en base datos... cambie email";
     public static final  String ERROR_FALTA_PASSWORD = "datos incompletos falta password";
     public static final  String ERROR_FALTA_EMAIL = "datos incompletos falta email";
+    public static final  String ERROR_EMAIL_ERRADO = "correo electrónico con formato incorrecto";
     public static final  String ERROR_FALTA_FIRS_NAME = "datos incompletos falta nombres";
     public static final  String ERROR_FALTA_LAST_NAME = "datos incompletos falta apellidos";
     public static final  String ERROR_FALTA_NUM_DOCUMENT = "datos incompletos falta numero documento";
     public static final  String ERROR_FALTA_NUM_PHONE = "datos incompletos falta numero celular";
+    public static final  String EXITO_CREAR_INFORMACION = "Informacion creada exitosamente.";
+    public static final  String ERROR_CREAR_INFORMACION = "No se logro guardar la informacion";
 }
