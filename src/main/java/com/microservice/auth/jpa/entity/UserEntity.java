@@ -31,7 +31,7 @@ public class UserEntity  {
     @Column(name = "nombres")
     private String fistName;
 
-    @Column(name = "numero_documento")
+    @Column(name = "numero_documento", unique = true)
     private String numDocument;
 
     @OneToOne

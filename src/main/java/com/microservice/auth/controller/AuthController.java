@@ -3,7 +3,7 @@ package com.microservice.auth.controller;
 import com.microservice.auth.dto.AuthResponse;
 import com.microservice.auth.dto.LoginRequest;
 import com.microservice.auth.dto.RegisterRequest;
-import com.microservice.auth.service.implementacion.AuthService;
+import com.microservice.auth.service.implementacion.AuthServiceImpl;
 import com.microservice.auth.util.Constantes;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Authentication", description = "Controller for Authentication")
 public class AuthController {
 
-    private final AuthService authService;
+    private final AuthServiceImpl authServiceImpl;
     private final CompromisedPasswordChecker passwordChecker;
 
     @Operation(
@@ -51,7 +51,7 @@ public class AuthController {
     )
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
-        return ResponseEntity.ok(authService.login(loginRequest));
+        return ResponseEntity.ok(authServiceImpl.login(loginRequest));
     }
 
 
@@ -84,6 +84,6 @@ public class AuthController {
         if (decision.isCompromised()) {
             throw new IllegalArgumentException(Constantes.CONTRASENA_REPETIDA);
         }
-        return ResponseEntity.ok(authService.register(registerRequest));
+        return ResponseEntity.ok(authServiceImpl.register(registerRequest));
     }
 }

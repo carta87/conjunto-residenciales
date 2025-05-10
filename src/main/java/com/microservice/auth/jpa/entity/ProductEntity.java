@@ -3,16 +3,17 @@ package com.microservice.auth.jpa.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-@Builder
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "espacio_comunal")
-public class SpaceCommunalEntity {
+@Table(name = "producto")
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +25,18 @@ public class SpaceCommunalEntity {
     @Column(name = "descripcion", length = 255)
     private String description;
 
+    @Column(name = "precio", nullable = false)
+    private BigDecimal price;
+
     @Column(name = "estado", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private StateSpaceEnum stateEnum;
+    private Boolean active;
 
-    @OneToMany(mappedBy = "spaceCommunalEntity")
-    private List<ReservationEntity> reservationEntityList;
+    @Column(name = "url_imagen")
+    private String imageUrl;
 
+    @Column(name = "imagen", columnDefinition = "LONGTEXT")
+    private String imageBase64;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentEntity> comments;
 }

@@ -3,10 +3,8 @@ package com.microservice.auth.service;
 import com.microservice.auth.dto.MenuDTO;
 import java.util.List;
 
-public interface IMenuService {
+public interface IMenuService extends IRepositoryGenery<MenuDTO, Integer> {
 
-    List<MenuDTO> findAll();
-
-    boolean save(MenuDTO menuDTO);
+    boolean createStatus(MenuDTO menuDTO);
 
 }

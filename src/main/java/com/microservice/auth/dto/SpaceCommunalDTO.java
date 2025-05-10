@@ -1,6 +1,6 @@
 package com.microservice.auth.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import com.microservice.auth.jpa.entity.StateSpaceEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,13 +10,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApartmentDTO {
+public class SpaceCommunalDTO {
 
     private Long id;
-    @NotBlank
-    private String ciudad;
-    @NotBlank
-    private String numeroApartamento;
-    @NotBlank
-    private String numeroTorre;
+
+    private String nombre;
+
+    private String descripcion;
+
+    private StateSpaceEnum estado;
+
 }

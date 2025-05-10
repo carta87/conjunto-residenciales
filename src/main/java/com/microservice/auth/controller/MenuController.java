@@ -23,7 +23,7 @@ public class MenuController {
 
     @PostMapping
     public ResponseEntity<String> save(@RequestBody MenuDTO menuDTO) {
-        return  menuService.save(menuDTO) ?
+        return  menuService.createStatus(menuDTO) ?
                 ResponseEntity.ok(Constantes.EXITO_CREAR_INFORMACION):
                 ResponseEntity.badRequest().body(Constantes.ERROR_CREAR_INFORMACION);
     }

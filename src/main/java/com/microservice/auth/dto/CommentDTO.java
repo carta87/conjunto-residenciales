@@ -10,13 +10,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApartmentDTO {
+public class CommentDTO {
 
     private Long id;
     @NotBlank
-    private String ciudad;
-    @NotBlank
-    private String numeroApartamento;
-    @NotBlank
-    private String numeroTorre;
+    private String contenido;
+    private Boolean positivo;
 }

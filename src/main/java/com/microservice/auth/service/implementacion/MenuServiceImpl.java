@@ -4,16 +4,17 @@ import com.microservice.auth.dto.MenuDTO;
 import com.microservice.auth.jpa.entity.MenuEntity;
 import com.microservice.auth.jpa.repository.IComponentRepository;
 import com.microservice.auth.jpa.repository.IMenuRepository;
-import com.microservice.auth.maper.MenuMapper;
+import com.microservice.auth.mapper.MenuMapper;
 import com.microservice.auth.service.IMenuService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class MenuService implements IMenuService {
+public class MenuServiceImpl implements IMenuService {
 
     private final IMenuRepository iMenuRepository;
     private final MenuMapper menuMapper;
@@ -29,13 +30,36 @@ public class MenuService implements IMenuService {
 
     @Override
     @Transactional
-    public boolean save(MenuDTO menuDTO) {
-        MenuEntity menuEntity = menuMapper.mapToEntity(menuDTO);
+    public boolean createStatus(MenuDTO entity) {
+        MenuEntity menuEntity = menuMapper.mapToEntity(entity);
 
         if (menuEntity.getComponentEntityList() != null) {
             menuEntity.getComponentEntityList().forEach(component -> component.setMenuEntity(menuEntity));
         }
 
-        return !iMenuRepository.save(menuEntity).getComponentEntityList().isEmpty();
+        return menuMapper.mapToDto(iMenuRepository.save(menuEntity)).getComponentDTOList().isEmpty();
     }
+
+    @Override
+    public Optional<MenuDTO> findById(Integer id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public MenuDTO create(MenuDTO entity) {
+        return null;
+    }
+
+
+
+    @Override
+    public MenuDTO update(Integer id, MenuDTO entity) {
+        return null;
+    }
+
+    @Override
+    public void delete(Integer id) {
+
+    }
+
 }

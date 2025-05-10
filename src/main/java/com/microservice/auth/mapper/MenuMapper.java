@@ -1,4 +1,4 @@
-package com.microservice.auth.maper;
+package com.microservice.auth.mapper;
 
 import com.microservice.auth.dto.ComponentDTO;
 import com.microservice.auth.dto.MenuDTO;

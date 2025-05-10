@@ -16,7 +16,7 @@ public class Constantes {
     public static final  String FORMATO_DD_MM_YYYY = "dd-MM-yyyy";
     public static final  String CONTRASENA_REPETIDA = "Contraseña  muy utilizada.... cambiarla";
     public static final  String ERROR_FORMATO_FECHA_NACIMIENTO = "Fecha de nacimiento inválida, formato esperado: dd-MM-yyyy";
-    public static final  String ERROR_EMAIL_REPETIDA = "usuario repetido en base datos... cambie email";
+    public static final  String ERROR_EMAIL_REPETIDA = "usuario repetido en base datos... cambie email o numero de documento";
     public static final  String ERROR_FALTA_PASSWORD = "datos incompletos falta password";
     public static final  String ERROR_FALTA_EMAIL = "datos incompletos falta email";
     public static final  String ERROR_EMAIL_ERRADO = "correo electrónico con formato incorrecto";
@@ -26,4 +26,5 @@ public class Constantes {
     public static final  String ERROR_FALTA_NUM_PHONE = "datos incompletos falta numero celular";
     public static final  String EXITO_CREAR_INFORMACION = "Informacion creada exitosamente.";
     public static final  String ERROR_CREAR_INFORMACION = "No se logro guardar la informacion";
+    public static final  String PRODUCTO_NO_ENCONTRADO = "Producto no encontrado con ID: ";
 }

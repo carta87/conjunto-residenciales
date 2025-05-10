@@ -15,7 +15,7 @@ public class MenuEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @OneToMany(mappedBy = "menuEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ComponentEntity> componentEntityList;
